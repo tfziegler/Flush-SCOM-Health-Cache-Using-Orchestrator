@@ -20,7 +20,7 @@ $S1 = New-PSsession  -ComputerName SERVERNAME -Credential $Credentials
 $SB = {
 
 # Renames Health Service State Folder
-    Rename-Item -Path "\\SRVCLIENT4\c`$\Program Files\Microsoft Monitoring Agent\Agent\Health Service State" -NewName 'Health Service State.old'
+    Rename-Item -Path "\\SERVERNAME\c`$\Program Files\Microsoft Monitoring Agent\Agent\Health Service State" -NewName 'Health Service State.old'
 }
 
 Invoke-Command -Session $s1 -ScriptBlock $SB
