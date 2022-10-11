@@ -1,10 +1,14 @@
-﻿###################################################################
+###################################################################
 #
 # Title: Rename Health Service State Folder.ps1
 # Author: Tom Ziegler
 # Company: Microsoft
-# Last Modified: 10-1-2022
-# Version: 1.0
+# Last Modified: 10-11-2022
+# Version: 1.1
+#
+# Version History:
+# 1.0 - Original
+# 1.1 - Added Check for existing Health Service State.old folder and delete it if it exists.
 #
 # Description - # Renames the Healther Service State Folder
 ###################################################################
@@ -18,6 +22,18 @@ $Credentials = New-Object System.Management.Automation.PSCredential($Username,$P
 # Enter PSSessions
 $S1 = New-PSsession  -ComputerName SERVERNAME -Credential $Credentials
 $SB = {
+
+# Check if Foldername Exists
+$FolderName = "\\SERVERNAME\c`$\Program Files\Microsoft Monitoring Agent\Agent\Health Service State.old"
+if (Test-Path $FolderName) {
+ 
+    Write-Host "Folder Exists"
+    Remove-Item $FolderName -Force -Recurse
+}
+else
+{
+    Write-Host "Folder Doesn't Exists"
+}
 
 # Renames Health Service State Folder
     Rename-Item -Path "\\SERVERNAME\c`$\Program Files\Microsoft Monitoring Agent\Agent\Health Service State" -NewName 'Health Service State.old'
