@@ -10,7 +10,7 @@
 # 1.0 - Original
 # 1.1 - Added Check for existing Health Service State.old folder and delete it if it exists.
 #
-# Description - # Renames the Healther Service State Folder
+# Description - # Renames the Health Service State Folder
 # THIS SCRIPT IS PROVIDED AS-IS WITH NO WARRANTY EITHER EXPRESSED OR IMPLIED
 ###################################################################
 
